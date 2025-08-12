@@ -1,0 +1,7 @@
+{
+  "name": "kiki",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
