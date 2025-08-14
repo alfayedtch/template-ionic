@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Accueil</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-avatar (click)="openProfileMenu($event)">
+        <img src="assets/img/profile.jpg" alt="Profile" />
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="home-content">
+  <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Accueil</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="search">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-label>Recherche</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="settings-outline"></ion-icon>
+      <ion-label>Paramètres</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

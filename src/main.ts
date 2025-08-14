@@ -6,6 +6,8 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { authInterceptor } from './app/interceptor/auth/auth.interceptor';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 
 bootstrapApplication(AppComponent, {
@@ -13,7 +15,8 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideAnimations() // <-- important pour les animations Angular
-
+    provideAnimations(), // <-- important pour les animations Angular,
+    provideHttpClient(withInterceptors([authInterceptor]))
   ],
 });
+

@@ -23,3 +23,21 @@
 .mt-4 {
   margin-top: 1.5rem;
 }
+.error-msg {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.register-btn {
+  color: #4facfe; /* bleu dégradé */
+  font-weight: bold;
+  text-transform: none;
+  font-size: 1rem;
+
+  &:hover {
+    color: #00f2fe;
+  }
+}
+
+

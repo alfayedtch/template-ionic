@@ -13,8 +13,8 @@
           <ion-item>
             <ion-icon name="person-outline" slot="start"></ion-icon>
             <ion-input
-              formControlName="emailOrPhone"
-              placeholder="Email ou téléphone"
+              formControlName="email"
+              placeholder="Email"
               type="text"
             ></ion-input>
           </ion-item>
@@ -31,7 +31,22 @@
           <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="mt-4">
             Se connecter
           </ion-button>
+
+          <ion-text color="danger" *ngIf="hasWrongCredentials">
+    <p class="error-msg">Email/téléphone ou mot de passe incorrect</p>
+  </ion-text>
         </form>
+
+        <div class="register-link">
+ <ion-button
+  expand="block"
+  fill="clear"
+  class="register-btn"
+  (click)="goToRegister()"
+>
+  Créer un compte gratuitement
+</ion-button>
+</div>
       </ion-card-content>
     </ion-card>
   </div>
