@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   public setCurrentUserValue(currentUser: User) {
-    this.currentUserSubject.next(currentUser);
+    this.currentUserSubject.next(new User(currentUser));
   }
 
   isAuthenticated(){

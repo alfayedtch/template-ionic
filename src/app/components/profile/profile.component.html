@@ -1,3 +1,53 @@
-<p>
-  profile works!
-</p>
+<ion-content class="ion-padding">
+
+  @if(form){
+  <form [formGroup]="form">
+    <!-- Avatar -->
+    <div class="avatar-container">
+      <ion-avatar class="profile-avatar">
+        <img [src]="imagePreview || 'assets/img/profile.jpg'" alt="Photo de profil" />
+      </ion-avatar>
+      <ion-button size="small" (click)="fileInput.click()" fill="outline">
+        Changer
+      </ion-button>
+      <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
+    </div>
+
+    <!-- Nom et Prénom -->
+    <ion-item>
+      <ion-label position="floating">Prénom</ion-label>
+      <ion-input formControlName="firstname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nom</ion-label>
+      <ion-input formControlName="lastname"></ion-input>
+    </ion-item>
+
+    <!-- Email -->
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <!-- Date de naissance -->
+    <ion-item>
+      <ion-label>Date de naissance</ion-label>
+      <ion-datetime formControlName="birthdate" presentation="date"></ion-datetime>
+    </ion-item>
+
+    <!-- Bouton Update -->
+    <ion-button expand="block" color="primary" (click)="update()" [disabled]="form.invalid || loading">
+      <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
+      Mettre à jour
+    </ion-button>
+
+    <!-- Messages -->
+    <ion-text color="danger" *ngIf="isConnected">
+      <p class="ion-text-center">Erreur dans la modification</p>
+    </ion-text>
+  </form>
+  }
+
+
+</ion-content>

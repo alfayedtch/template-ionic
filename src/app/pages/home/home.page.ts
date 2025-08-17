@@ -14,6 +14,7 @@ import {
   IonLabel,
   IonRouterOutlet,
   PopoverController,
+  IonFooter,
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { ProfileMenuComponent } from './profile-menu.component';
@@ -34,12 +35,12 @@ import { User } from 'src/app/interfaces/user';
     IonButtons,
     IonAvatar,
     IonContent,
-    IonTabs,
     IonTabBar,
     IonTabButton,
     IonIcon,
     IonLabel,
     IonRouterOutlet,
+    IonFooter
   ],
 })
 export class HomePage implements OnInit {
@@ -57,13 +58,13 @@ export class HomePage implements OnInit {
         this.closePopover();
       });
     this.authService.currentUser.subscribe(
-      (currentUser) => (this.user = currentUser)
+      (currentUser:User) => (this.user = currentUser)
     );
   }
   ngOnInit(): void {
     this.authService.getUserByToken().subscribe(
       (response: any) => {
-        this.authService.setCurrentUserValue(response.user);
+        this.authService.setCurrentUserValue(<User>response.user);
       },
       (err) => {
         this.logout();

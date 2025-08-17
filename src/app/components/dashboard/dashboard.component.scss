@@ -1,0 +1,35 @@
+.dashboard-content {
+  --background: #4facfe;
+  padding: 1rem;
+}
+
+.card-stat {
+  text-align: center;
+  border-radius: 12px;
+  color: white;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-stat.primary {
+  --background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.card-stat.secondary {
+  --background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+ion-card-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+ion-item {
+  --background: white;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  --ion-item-background-activated: #e0f7fa;
+}
