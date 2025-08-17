@@ -12,7 +12,7 @@ import { User } from 'src/app/interfaces/user';
   <!-- En-tête avec avatar -->
   <div class="profile-header">
     <ion-avatar class="profile-avatar">
-      <img src="https://alfayedtchagnao.site/wp-content/uploads/2025/07/profil-Photoroom.png" alt="Photo de profil" />
+      <img [src]="user?.imagePreview" alt="Photo de profil" />
     </ion-avatar>
     <h4>{{ user?.firstname }} {{ user?.lastname }}</h4>
     <p>{{ user?.email }}</p>
@@ -21,7 +21,7 @@ import { User } from 'src/app/interfaces/user';
   <!-- Liste d’actions -->
   <ion-list class="profile-list">
     <ion-item button detail="true" (click)="goToProfile()">
-      <ion-label>M profil</ion-label>
+      <ion-label>Mon profil</ion-label>
     </ion-item>
 
     <ion-item button detail="true" (click)="logout()" >

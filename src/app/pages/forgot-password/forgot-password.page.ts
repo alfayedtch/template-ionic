@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonItem, IonIcon, IonInput, IonButton, IonText } from '@ionic/angular/standalone';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCardContent, IonItem, IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonInput, IonText } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.page.html',
+  styleUrls: ['./forgot-password.page.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
+  imports: [ CommonModule,
     ReactiveFormsModule,
     IonContent,
     IonCard,
@@ -24,9 +23,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     IonIcon,
     IonInput,
     IonButton,
-    IonText
-  ],
-  animations: [
+    IonText],
+      animations: [
     trigger('zoomIn', [
       transition(':enter', [
         style({ transform: 'scale(0.8)', opacity: 0 }),
@@ -35,8 +33,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     ])
   ]
 })
-export class LoginPage {
-  loginForm: FormGroup;
+export class ForgotPasswordPage implements OnInit {
+  forgotPasswordForm: FormGroup;
   loading = false;
   hasWrongCredentials = false;
 
@@ -46,22 +44,23 @@ export class LoginPage {
     private authService: AuthService,
     private router: Router
   ) {
-    this.loginForm = this.fb.group({
+    this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+  ngOnInit(): void {
+  }
 
- onLogin() {
-  if (this.loginForm.valid) {
-    const formData = this.loginForm.value;
+ onRequestForgotPassword() {
+  if (this.forgotPasswordForm.valid) {
+    const formData = this.forgotPasswordForm.value;
     this.loading = true;
     this.hasWrongCredentials = false; // reset à chaque tentative
 
-    this.authService.login(formData).subscribe(
+    this.authService.submitForgotPassword(formData).subscribe(
       response => {
         this.loading = false;
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('login');
       },
       err => {
         this.loading = false;
@@ -80,7 +79,8 @@ goToRegister() {
   this.router.navigateByUrl('/register');
 }
 
-goToForgotPassword(){
-  this.router.navigateByUrl('/forgot-password');
+goToLogin(){
+  this.router.navigateByUrl('/ogin');
 }
+
 }
